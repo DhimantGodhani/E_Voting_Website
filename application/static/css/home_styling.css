@@ -1,0 +1,102 @@
+/* Style sheet created by: Aayush Rishi, Dhimant Godhani, Vaibhav Hooda and Vishal Kumar. 03rd June, 2021 */
+body {
+  background-image: url("home_back.png");
+}
+
+.home{
+	box-sizing: border-box;
+    margin-bottom: 5px;
+    display: block;
+    width: auto;
+    max-width: 1366px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+strong {
+	font-weight: bolder;	
+	color: #fff;
+	font-family: sans-serif;
+}
+
+.home p {
+    text-align: center;
+    font-size: 25px;
+    color: darkblue;
+    margin-top: 90px;
+    font-style: italic;
+}
+
+.homeContainer{
+	font-family: Source Sans Pro;
+    font-size: 90%;
+	width: 100%;
+	margin-top: 5%;
+}
+
+.homeBlogs{	
+	display: block;
+	border-radius: 10%;
+	overflow: hidden;
+	padding-left: 2%;
+    padding-right: 2%;
+	padding-top: 5%;
+    padding-bottom: 5%;
+	max-width:70%;
+	transition: all;
+	margin: auto;
+	border-style: outset;
+}
+
+.homeBlogs h2{
+	font-family: serif;
+	font-weight: normal;
+}
+
+.homeBlogs img{
+	border-radius: 20px;
+}
+
+div.homeBlogs:hover{
+	background-color: silver;
+}
+
+.news_block a:hover{    
+    color: red; 
+}
+
+.BDheadings{
+	background-color: white;
+	height: 100%;
+}
+
+.BDimage img{
+	border-radius: 4%;
+	display: block;
+	margin-top: 2%;
+	margin-left: auto;
+	margin-right: auto;
+	width: 70%;
+    height: 40%;	
+}
+
+.BDtext p{
+	text-align: center;
+	font-weight: bold;
+	font-size: 160%;
+	font-family: serif;
+}
+
+.BDtext li{
+	text-align: left;
+	font-weight: normal;
+	font-size: 140%;	
+}
+
+@media(max-width: 991px){
+	.home{
+		margin-left: 20px;
+		margin-right: 20px;
+		padding: 40px 20px 40px 20px;
+	}
+}
