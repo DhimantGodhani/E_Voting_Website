@@ -14,17 +14,16 @@ body {
 }
 
 strong {
-	font-weight: bolder;	
-	color: #fff;
+	font-weight: bolder;
 	font-family: sans-serif;
 }
 
 .home p {
     text-align: center;
     font-size: 25px;
-    color: darkblue;
     margin-top: 90px;
     font-style: italic;
+    color: cyan;
 }
 
 .homeContainer{
@@ -58,7 +57,7 @@ strong {
 }
 
 div.homeBlogs:hover{
-	background-color: silver;
+	background-color: red;
 }
 
 .news_block a:hover{    
