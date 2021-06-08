@@ -1,0 +1,8 @@
+<header>
+    <nav>
+        <a href="{{ url_for('home') }}" class="nav-link {% if home %} active {% endif %}">Home</a>
+        <a href="{{ url_for('login') }}" class="nav-link {% if login %} active {% endif %}">Login</a>
+        <a href="{{ url_for('register') }}" class="nav-link {% if register %} active {% endif %}">Register</a>
+    </nav>
+    <hr>
+</header>

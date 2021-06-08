@@ -1,22 +1,20 @@
 {% extends "base.html" %}
 
 {% block css_links %}
-<link rel="stylesheet" href="static/css/register_styling.css">
+<link rel="stylesheet" href="static/css/login_styling.css">
 <link rel="stylesheet" href="static/css/header_footer_styling.css">
 {% endblock %}
 
 {% block content %}
 <main class="home">
-	<div class="registration_form">
-		<form name="register">
-			<h3>Create New User.</h3>
+	<div class="login_form">
+		<form name="login">
+			<h3>Log In</h3>
 			<label for="username"><b>UserName</b></label>
 			<input class="inputTextbox" type="text" placeholder="Enter Username" name="username" required><br><br>
-			<label for="email"><b>Email</b></label>
-			<input class="inputTextbox" type="text" placeholder="Enter Email" name="email" required><br><br>
 			<label for="password"><b>Password</b></label>
 			<input class="inputTextbox" type="text" placeholder="Enter Password" name="password" required><br><br>
-			<button class="register_btn" type="submit">Register</button>
+			<button class="login_btn" type="submit">Login</button>
 		</form>
 	</div>
 </main>
