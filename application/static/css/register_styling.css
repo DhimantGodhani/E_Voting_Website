@@ -1,0 +1,23 @@
+/* Style sheet created by: Aayush Rishi, Dhimant Godhani, Vaibhav Hooda and Vishal Kumar. 03rd June, 2021 */
+body {
+  background-image: url("home_back.png");
+}
+.registration_form{
+    width: 80%;
+	margin-top: 50px;
+	border-style: outset;
+	padding: 20px 10px 20px 10px;
+	border-radius: 5%;
+	text-align: center !important;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+.inputTextbox{
+	width: 50%;
+    height: 30px;
+}
+
+.register_btn{
+	width: 10%;
+    height: 30px;
+}
