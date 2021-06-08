@@ -9,7 +9,7 @@ body {
 }
 
 /* Add a black background color to the top navigation */
-.topnav {
+nav {
   text-align: center;
   overflow: hidden;
   margin-left: 20%;
@@ -18,34 +18,20 @@ body {
 }
 
 /* Style the links inside the navigation bar */
-.topnav a {
-  color: black;
+nav a {
+  color: cyan;
   text-align: center;
   padding: 14px 16px;
   font-size: 17px;
   display: inline-block;
 }
 
-/* Style the image inside the navigation bar */
-.topnav img {
-  color: #f2f2f2;
-  text-align: center;
-  margin-top: 50px;
-}
 
 /* Change the color of links on hover */
-.topnav a:hover {
-  background-color: silver;
+nav a:hover, .active {
+  background-color: darkblue;
 }
 
-
-
-
-img.logo-image {
-    width: 100px;
-    margin-top: 00px;
-    margin-bottom: 00px;
-}
 
 /* Styling of footer */
 
@@ -191,8 +177,6 @@ img.logo-image {
 	margin-bottom: 5px;
 }
 
-.mobilelogo{display: none !important;}
-
 
 @media(max-width: 991px){
 	.footer-distributed .footer-left, 
@@ -203,25 +187,15 @@ img.logo-image {
 	}
 	
 
-	.topnav {
+	nav {
 	  margin-left: 20px;
 	  margin-right: 20px;
 	}
 
-	.dasktoplogo{
-		display: none !important;
-	}
-
-	.mobilelogo{display: inline-block !important;}
-
-
 }
 
 @media(max-width: 767px){
-	.mobilelogo { 
-	    width: 100%;
-	}
-	.topnav a { 
+	nav a {
 	    padding: 14px 10px; 
 	}
 }
