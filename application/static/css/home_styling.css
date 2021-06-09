@@ -52,16 +52,20 @@ strong {
 	font-weight: normal;
 }
 
+.homeBlogs a{
+    color: cyan;
+}
+
 .homeBlogs img{
 	border-radius: 20px;
 }
 
 div.homeBlogs:hover{
-	background-color: red;
+	background-color: #ee13f2;
 }
 
 .news_block a:hover{    
-    color: red; 
+    color: blue;
 }
 
 .BDheadings{

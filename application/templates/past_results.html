@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block css_links %}
+<link rel="stylesheet" href="static/css/past_results.css">
+<link rel="stylesheet" href="static/css/header_footer_styling.css">
+{% endblock %}
+
+{% block content %}
+<main class="home">
+    <h1>Winners</h1>
+    <table class="past_resultsTable">
+        <tr>
+            <th>
+                Year
+            </th>
+            <th>
+                Party ID
+            </th>
+            <th>
+                Party Name
+            </th>
+            <th>
+                Total votes
+            </th>
+            <th>
+                Result
+            </th>
+        </tr>
+
+        {% for data in partyData %}
+        <tr>
+            <td>{{data["year"]}}</td>
+            <td>{{data["partyID"]}}</td>
+            <td>{{data["partyName"]}}</td>
+            <td>{{data["partyVotes"]}}</td>
+            <td>{{data["result"]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</main>
+{% endblock %}
