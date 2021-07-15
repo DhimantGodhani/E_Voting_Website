@@ -1,13 +1,59 @@
 {% extends "base.html" %}
 
 {% block css_links %}
-<link rel="stylesheet" href="static/css/voteNow.css">
+<link rel="stylesheet" href="static/css/voteNow_styling.css">
 <link rel="stylesheet" href="static/css/header_footer_styling.css">
 {% endblock %}
 
 {% block content %}
-<main class="home">
+<main class="candidates">
+			<div class="voting-intro">
+				<p>
+				"Time to choose your new college president!!!"
+				</p>
+			</div>
 
+			<div class="candidate-profile">
+				<div class="candidate-image">
+					<img class="image1-3" src="static/images/aayush.jpg" alt="image not found">
+				</div>
+				<div class="candidate-detail">
+					<h4>
+						Candidate: Aayush Rishi<br>
+						Party: AAP<br>
+						Age: 25
+					</h4>
+					<button>Vote</button>
+				</div>
+			</div>
+
+			<div class="candidate-profile">
+				<div class="candidate-image">
+					<img class="image1-3" src="static/images/vaibhav.jpg" alt="image not found">
+				</div>
+				<div class="candidate-detail">
+					<h4>
+						Candidate: Vaibhav Hooda<br>
+						Party: INC<br>
+						Age: 25
+					</h4>
+					<button>Vote</button>
+				</div>
+			</div>
+
+			<div class="candidate-profile">
+				<div class="candidate-image">
+					<img class="image1-3" src="static/images/dhimant.jpg" alt="image not found">
+				</div>
+				<div class="candidate-detail">
+					<h4>
+						Candidate: Dhimant Godhani<br>
+						Party: TMC<br>
+						Age: 25
+					</h4>
+					<button>Vote</button>
+				</div>
+			</div>
 
 </main>
 {% endblock %}
