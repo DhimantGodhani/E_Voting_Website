@@ -17,6 +17,24 @@ body {
     height: 30px;
 }
 
+.name_label{
+    padding: 2%;
+}
+
+.password_label{
+    padding: 2.3%;
+}
+
+.msg{
+    text-align: center !important;
+    color: orange;
+}
+
+.age_label{
+    padding: 4%;
+}
+
+
 .register_btn{
 	width: 10%;
     height: 30px;
