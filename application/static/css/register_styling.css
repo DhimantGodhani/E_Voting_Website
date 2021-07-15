@@ -11,6 +11,7 @@ body {
 	text-align: center !important;
 	margin-left: 10%;
 	margin-right: 10%;
+	color: cyan;
 }
 .inputTextbox{
 	width: 50%;
@@ -34,6 +35,9 @@ body {
     padding: 4%;
 }
 
+.radio_label{
+    color: black !important;
+}
 
 .register_btn{
 	width: 10%;

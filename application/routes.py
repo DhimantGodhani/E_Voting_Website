@@ -7,6 +7,8 @@ db = connection_db.connect_to_mongodb()
 
 @app.route("/")
 def home():
+    if "email" in session:
+        return render_template("index.html", home=True, isLoggedIn=True)
     return render_template("index.html", home=True)
 
 
@@ -32,6 +34,12 @@ def register():
     return render_template("register.html", register=True)
 
 
+@app.route("/logout")
+def logout():
+    session.clear()
+    return render_template("index.html", home=True)
+
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     msg = 'Please login to your account'
@@ -45,10 +53,10 @@ def login():
             password_val = username_found['password']
             if password == password_val:
                 session["email"] = username_val
-                return render_template("index.html", home=True, login=False, register=False)
+                return render_template("index.html", home=True, isLoggedIn=True)
             else:
                 if "email" in session:
-                    return render_template("index.html", home=True, login=False, register=False)
+                    return render_template("index.html", home=True, isLoggedIn=True)
                 msg = 'Wrong password'
                 return render_template('login.html', msg=msg)
         else:

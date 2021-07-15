@@ -11,6 +11,7 @@ body {
 	text-align: center !important;
 	margin-left: 10%;
 	margin-right: 10%;
+	color: cyan
 }
 .inputTextbox{
 	width: 50%;
@@ -25,4 +26,12 @@ body {
 .msg{
     text-align: center !important;
     color: orange;
+}
+
+.name_label{
+    padding: 2%;
+}
+
+.password_label{
+    padding: 2.3%;
 }
