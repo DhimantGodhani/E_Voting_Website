@@ -1,0 +1,64 @@
+/* Style sheet created by: Aayush Rishi, Dhimant Godhani, Vaibhav Hooda and Vishal Kumar. 03rd June, 2021 */
+body {
+  background-image: url("home_back.png");
+}
+
+
+/* The main contents of the web page */
+
+.candidates{
+	box-sizing: border-box;
+    font: bold 16px sans-serif;
+    padding: 50px 50px 60px 50px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+
+.candidates .voting-intro p{
+	text-align: center;
+	font-size: 40px;
+	color: cyan;
+	font-style: italic;
+	font-family: "Times New Roman", serif;
+	font-weight: normal;
+}
+
+
+.voting-intro {
+    margin-bottom: 50px;
+}
+
+.candidates .candidate-profile {
+    display: inline-block;
+    align-items: center;
+	border-style: outset;
+	border-radius: 5%;
+	padding: 20px 10px 20px 10px;
+	width: 25%;
+	margin-right: 20px;
+}
+
+
+.candidates .candidate-profile .candidate-detail h4{
+	font-size: 20px;
+	font-family: "Times New Roman", serif;
+	color: cyan;
+}
+
+button{
+ font-size: 20px;
+}
+
+.image1-3{
+	border-radius: 10px !important;
+    opacity: 1.2 !important;
+    margin-left: 0% !important;
+    width: 100% !important;
+    height: 350px;
+}
