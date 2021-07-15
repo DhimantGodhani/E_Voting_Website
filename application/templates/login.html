@@ -9,7 +9,7 @@
 <main class="home">
 	{% if msg  %}
     <div class="alert alert-secondary" role="alert">
-        <p>{{ msg }}</p>
+        <p class="msg">{{ msg }}</p>
     </div>
 {% endif %}
 	<div class="login_form">
@@ -18,7 +18,7 @@
 			<label for="username"><b>UserName</b></label>
 			<input class="inputTextbox" type="text" placeholder="Enter Username" name="username" required><br><br>
 			<label for="password"><b>Password</b></label>
-			<input class="inputTextbox" type="text" placeholder="Enter Password" name="password" required><br><br>
+			<input class="inputTextbox" type="password" placeholder="Enter Password" name="password" required><br><br>
 			<button class="login_btn" type="submit">Login</button>
 		</form>
 	</div>

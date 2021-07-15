@@ -7,15 +7,27 @@
 
 {% block content %}
 <main class="home">
+	{% if msg  %}
+		<div class="alert alert-secondary" role="alert">
+			<p class="msg">{{ msg }}</p>
+		</div>
+	{% endif %}
 	<div class="registration_form">
-		<form name="register">
+		<form name="register" action="/register" method="post">
 			<h3>Create New User.</h3>
-			<label for="username"><b>UserName</b></label>
-			<input class="inputTextbox" type="text" placeholder="Enter Username" name="username" required><br><br>
-			<label for="email"><b>Email</b></label>
-			<input class="inputTextbox" type="text" placeholder="Enter Email" name="email" required><br><br>
-			<label for="password"><b>Password</b></label>
-			<input class="inputTextbox" type="text" placeholder="Enter Password" name="password" required><br><br>
+			<label class="name_label" for="name"><b>Full Name</b></label>
+			<input class="inputTextbox" type="text" placeholder="Enter Full Name" name="name" required><br><br>
+			<label class="name_label" for="username"><b>UserName</b></label>
+			<input class="inputTextbox" type="email" placeholder="Enter Username" name="username" required><br><br>
+			<label class="password_label" for="password"><b>Password</b></label>
+			<input class="inputTextbox" type="password" placeholder="Enter Password" name="password" required><br><br>
+			<label class="age_label" for="age"><b>Age</b></label>
+			<input class="inputTextbox" type="number" placeholder="Enter Age" name="age" required><br><br>
+			<label class="name_label" for="gender"><b>Gender</b></label>
+			<input type="radio" id="male" name="gender" value="Male" checked>
+			<label for="male">Male</label>
+			<input type="radio" id="female" name="gender" value="Female">
+			<label for="female">Female</label><br><br>
 			<button class="register_btn" type="submit">Register</button>
 		</form>
 	</div>

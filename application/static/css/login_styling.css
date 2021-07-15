@@ -21,3 +21,8 @@ body {
 	width: 10%;
     height: 30px;
 }
+
+.msg{
+    text-align: center !important;
+    color: orange;
+}
