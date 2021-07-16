@@ -1,5 +1,7 @@
 from application import app, db_connection
 from flask import render_template, request, session
+from bson.json_util import dumps
+import json
 
 connection_db = db_connection.db_connection()
 db = connection_db.connect_to_mongodb()
@@ -68,12 +70,12 @@ def login():
 
 @app.route("/past_results")
 def past_results():
-    partyD = db["election_year_2021"]
-    partyD_cursor = partyD.find({})
-    for partyData in partyD_cursor:
-        print(partyData)
-
-    return render_template("past_results.html", login=True, partyData=partyData)
+    partyD = db["election_year_2020"]
+    partyD_cursor = partyD.find()
+    partyD_cursor_list = list(partyD_cursor)
+    partyD_json1 = dumps(partyD_cursor_list)
+    partyD_json = json.loads(partyD_json1)
+    return render_template("past_results.html", login=True, partyD_json=partyD_json)
 
 
 @app.route("/voteNow")
