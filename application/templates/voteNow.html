@@ -16,28 +16,35 @@
          		{% endif %}
      		 {% endwith %}
 
-			<div class="voting-intro">
-				<p>
-				"Time to choose your new college president!!!"
-				</p>
-			</div>
-			{% for data in candidates_json %}
-				<div class="candidate-profile">
-					<div class="candidate-image">
-						<img class="image1-3" src="static/images/{{ data['name'] }}.jpg" alt="image not found">
-					</div>
-					<div class="candidate-detail">
-						<h4>
-							Candidate: {{ data['name'] }}<br>
-							Party: {{ data['party'] }}<br>
-							Age: {{ data['age'] }}
-						</h4>
-						<form action="/vote?candidate={{ data['name'] }}" method="post">
-    						<button name="voteBtn" type="submit">Vote</button>
-						</form>
-					</div>
+			{% if voting_open %}
+
+				<div class="voting-intro">
+					<p>
+					"Time to choose your new college president!!!"
+					</p>
 				</div>
-        	{% endfor %}
+				{% for data in candidates_json %}
+					<div class="candidate-profile">
+						<div class="candidate-image">
+							<img class="image1-3" src="static/images/{{ data['name'] }}.jpg" alt="image not found">
+						</div>
+						<div class="candidate-detail">
+							<h4>
+								Candidate: {{ data['name'] }}<br>
+								Party: {{ data['party'] }}<br>
+								Age: {{ data['age'] }}
+							</h4>
+							<form action="/vote?candidate={{ data['name'] }}" method="post">
+								<button name="voteBtn" type="submit">Vote</button>
+							</form>
+						</div>
+					</div>
+				{% endfor %}
+			{% else %}
+				<p>
+					No election happening as of now! Please check our Past results and future events page.
+				</p>
+			{% endif %}
 
 </main>
 {% endblock %}

@@ -20,7 +20,7 @@ body {
     width: 100%;
 }
 
-p{
+.candidates p{
 	text-align: center;
 	font-size: 40px;
 	color: cyan;
