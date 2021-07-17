@@ -1,0 +1,37 @@
+h1{
+    text-align:center;
+    color:cyan;
+}
+
+.container{
+    display: block;
+	border-radius: 10%;
+	overflow: hidden;
+	padding-left: 2%;
+    padding-right: 2%;
+    padding-top:5px;
+    padding-bottom: 5%;
+	width:900px;
+	height:350px;
+	transition: all;
+	margin: auto;
+	border-style: outset;
+}
+.container h2{
+	font-family: serif;
+	font-weight: bold;
+	color:cyan;
+}
+.container p , li {
+    font-family: serif;
+    font-size:25px;
+    color:cyan;
+    padding:5px;
+
+}
+.container:hover{
+    background-color: #ee13f2;
+
+}
+
+
