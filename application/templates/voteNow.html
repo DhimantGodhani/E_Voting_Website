@@ -7,53 +7,37 @@
 
 {% block content %}
 <main class="candidates">
+
+			{% with messages = get_flashed_messages() %}
+         		{% if messages %}
+               		{% for message in messages %}
+                    	<p>{{ message }}</p>
+               		{% endfor %}
+         		{% endif %}
+     		 {% endwith %}
+
 			<div class="voting-intro">
 				<p>
 				"Time to choose your new college president!!!"
 				</p>
 			</div>
-
-			<div class="candidate-profile">
-				<div class="candidate-image">
-					<img class="image1-3" src="static/images/aayush.jpg" alt="image not found">
+			{% for data in candidates_json %}
+				<div class="candidate-profile">
+					<div class="candidate-image">
+						<img class="image1-3" src="static/images/{{ data['name'] }}.jpg" alt="image not found">
+					</div>
+					<div class="candidate-detail">
+						<h4>
+							Candidate: {{ data['name'] }}<br>
+							Party: {{ data['party'] }}<br>
+							Age: {{ data['age'] }}
+						</h4>
+						<form action="/vote?candidate={{ data['name'] }}" method="post">
+    						<button name="voteBtn" type="submit">Vote</button>
+						</form>
+					</div>
 				</div>
-				<div class="candidate-detail">
-					<h4>
-						Candidate: Aayush Rishi<br>
-						Party: AAP<br>
-						Age: 25
-					</h4>
-					<button>Vote</button>
-				</div>
-			</div>
-
-			<div class="candidate-profile">
-				<div class="candidate-image">
-					<img class="image1-3" src="static/images/vaibhav.jpg" alt="image not found">
-				</div>
-				<div class="candidate-detail">
-					<h4>
-						Candidate: Vaibhav Hooda<br>
-						Party: INC<br>
-						Age: 25
-					</h4>
-					<button>Vote</button>
-				</div>
-			</div>
-
-			<div class="candidate-profile">
-				<div class="candidate-image">
-					<img class="image1-3" src="static/images/dhimant.jpg" alt="image not found">
-				</div>
-				<div class="candidate-detail">
-					<h4>
-						Candidate: Dhimant Godhani<br>
-						Party: TMC<br>
-						Age: 25
-					</h4>
-					<button>Vote</button>
-				</div>
-			</div>
+        	{% endfor %}
 
 </main>
 {% endblock %}
