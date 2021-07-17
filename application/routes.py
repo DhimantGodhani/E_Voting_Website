@@ -71,12 +71,32 @@ def login():
 
 @app.route("/past_results")
 def past_results():
-    partyD = db["election_year_2020"]
-    partyD_cursor = partyD.find()
-    partyD_cursor_list = list(partyD_cursor)
-    partyD_json1 = dumps(partyD_cursor_list)
-    partyD_json = json.loads(partyD_json1)
-    return render_template("past_results.html", login=True, partyD_json=partyD_json)
+    # election 2019
+    e_2019 = db["election_year_2019"]
+    e_2019_cursor = e_2019.find()
+    e_2019_cursor_list = list(e_2019_cursor)
+    e_2019_json = dumps(e_2019_cursor_list)
+    e_2019_data = json.loads(e_2019_json)
+
+    # election 2020
+    e_2020 = db["election_year_2020"]
+    e_2020_cursor = e_2020.find()
+    e_2020_cursor_list = list(e_2020_cursor)
+    e_2020_json = dumps(e_2020_cursor_list)
+    e_2020_data = json.loads(e_2020_json)
+
+    # election 2021
+    e_2021 = db["election_year_2021"]
+    e_2021_cursor = e_2021.find()
+    e_2021_cursor_list = list(e_2021_cursor)
+    e_2021_json = dumps(e_2021_cursor_list)
+    e_2021_data = json.loads(e_2021_json)
+
+    if "email" in session:
+        return render_template("past_results.html", login=True, e_2019_data=e_2019_data, e_2020_data=e_2020_data,
+                               e_2021_data=e_2021_data, isLoggedIn=True)
+    return render_template("past_results.html", login=True, e_2019_data=e_2019_data, e_2020_data=e_2020_data,
+                           e_2021_data=e_2021_data)
 
 
 @app.route("/voteNow")

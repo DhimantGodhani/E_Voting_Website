@@ -1,12 +1,13 @@
-.past_resultsTable{
+table{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     border: 1px solid white;
     width: 90%;
     border-collapse: collapse;
-    background-color: #f2eaea;
     font-size: 110%;
+    color: cyan;
+    margin-bottom: 5%;
 }
 
 th{
@@ -16,5 +17,5 @@ th{
 
 h1{
     text-align: center;
-    color: cyan;
+    color: white;
 }

@@ -7,8 +7,8 @@
 
 {% block content %}
 <main class="home">
-    <h1>Winners</h1>
-    <table class="past_resultsTable">
+    <h1>2021 Elections: </h1>
+    <table>
         <tr>
             <th>
                 Candidate Name
@@ -27,15 +27,79 @@
             </th>
         </tr>
 
-        {% for data in partyD_json %}
+        {% for data in e_2021_data %}
+            <tr>
+                <td>{{data['name']}}</td>
+                <td>{{data['age']}}</td>
+                <td>{{data['party']}}</td>
+                <td>{{data['vote']}}</td>
+                <td>{{data['is_winner']}}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+    <h1>2020 Elections: </h1>
+    <table>
         <tr>
-            <td>{{data['name']}}</td>
-            <td>{{data['age']}}</td>
-            <td>{{data['party']}}</td>
-            <td>{{data['vote']}}</td>
-            <td>{{data['is_winner']}}</td>
+            <th>
+                Candidate Name
+            </th>
+            <th>
+                Candidate Age
+            </th>
+            <th>
+                Party Name
+            </th>
+            <th>
+                Total votes
+            </th>
+            <th>
+                Is Winner ?
+            </th>
         </tr>
+
+         {% for data in e_2020_data %}
+            <tr>
+                <td>{{data['name']}}</td>
+                <td>{{data['age']}}</td>
+                <td>{{data['party']}}</td>
+                <td>{{data['vote']}}</td>
+                <td>{{data['is_winner']}}</td>
+            </tr>
         {% endfor %}
     </table>
+
+    <h1>2019 Elections: </h1>
+    <table>
+        <tr>
+            <th>
+                Candidate Name
+            </th>
+            <th>
+                Candidate Age
+            </th>
+            <th>
+                Party Name
+            </th>
+            <th>
+                Total votes
+            </th>
+            <th>
+                Is Winner ?
+            </th>
+        </tr>
+
+         {% for data in e_2020_data %}
+            <tr>
+                <td>{{data['name']}}</td>
+                <td>{{data['age']}}</td>
+                <td>{{data['party']}}</td>
+                <td>{{data['vote']}}</td>
+                <td>{{data['is_winner']}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
 </main>
 {% endblock %}
