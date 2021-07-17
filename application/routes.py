@@ -114,7 +114,22 @@ def voteNow():
 
 @app.route("/futureEvents")
 def futureEvents():
-    return render_template("futureEvents.html", login=True)
+    eventData = [{"eventName": "Staff Selection Voting !!!", "eventDesc": "This event is held by Service Staff Selecltion "
+                                                                      "Commission and main objective to select "
+                                                                      "eligible candidate.",
+                  "location": "23 Banting crescent", "time": " 12:30pm"},
+                 {"eventName": "Party Refreshment Treat !!!", "eventDesc": "We are happy to announce that we organizing "
+                                                                        "Refreshment treat for all the party members "
+                                                                        ",Please come and join "
+                                                                        "eligible candidate.",
+                  "location": "Steels Ave 203", "time": " 03:50pm"},
+                 {"eventName": "Declaration of Voting Results !!!", "eventDesc": "Its a great news for all party members that"
+                                                                        " voting results will be announce on this event. So most "
+                                                                        " Welcome and good luck to all"
+                                                                        "eligible candidate.",
+                  "location": " Queen West 501", "time": " 02:20pm"}
+                 ]
+    return render_template("futureEvents.html", login=True, eventData=eventData)
 
 
 @app.route('/vote', methods=['GET', 'POST'])

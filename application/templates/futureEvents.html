@@ -7,7 +7,19 @@
 
 {% block content %}
 <main class="home">
+    <h1>Future Events</h1>
+     {% for data in eventData %}
+    <div class="w3-container w3-center w3-animate-zoom">
+    <div class="container">
+        <h2>{{data["eventName"]}}</h2>
 
+             <p>{{data["eventDesc"]}}</p>
+            <p>Location:{{data["location"]}}</p>
+             <p>Time:{{data["time"]}}</p>
+
+    </div>
+    </div><br>
+{% endfor %}
     
 </main>
 {% endblock %}
