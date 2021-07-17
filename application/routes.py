@@ -177,3 +177,4 @@ def validate_time():
         candidate_new_value = {"$set": {'is_winner': True}}
         candidates.update_one(candidate_filter, candidate_new_value)
         return False
+
