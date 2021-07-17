@@ -1,7 +1,8 @@
 from application import app, db_connection
-from flask import render_template, request, session
+from flask import render_template, request, session, flash, redirect
 from bson.json_util import dumps
 import json
+import datetime
 
 connection_db = db_connection.db_connection()
 db = connection_db.connect_to_mongodb()
@@ -80,9 +81,79 @@ def past_results():
 
 @app.route("/voteNow")
 def voteNow():
-    return render_template("voteNow.html", login=True)
+    candidates = db["election_year_2021"]
+    candidates_cursor = candidates.find()
+    candidates_cursor_list = list(candidates_cursor)
+    candidates_json_1 = dumps(candidates_cursor_list)
+    candidates_json = json.loads(candidates_json_1)
+    voting_open = validate_time()
+    if "email" in session:
+        return render_template("voteNow.html", login=True, candidates_json=candidates_json, voting_open=voting_open, isLoggedIn=True)
+    return render_template("voteNow.html", login=True, candidates_json=candidates_json, voting_open=voting_open)
 
 
 @app.route("/futureEvents")
 def futureEvents():
     return render_template("futureEvents.html", login=True)
+
+
+@app.route('/vote', methods=['GET', 'POST'])
+def vote():
+    if 'email' in session:
+        email = session['email']
+        users_table = db["users"]
+        email_found = users_table.find_one({"username": email})
+        if email_found:
+
+            if email_found['voted']:
+                flash("You have already voted!")
+                return redirect('/voteNow')
+
+            candidates_table = db["election_year_2021"]
+            candidate_name = request.args.get('candidate')
+            candidate_found = candidates_table.find_one({"name": candidate_name})
+
+            if candidate_found:
+                # Update vote count of the candidate
+                vote_count = int(candidate_found['vote']) + 1
+                candidate_filter = {'name': candidate_name}
+                candidate_new_value = {"$set": {'vote': vote_count}}
+                candidates_table.update_one(candidate_filter, candidate_new_value)
+
+                # Update voting status of the user
+                user_filter = {'username': email}
+                user_new_value = {"$set": {'voted': True}}
+                users_table.update_one(user_filter, user_new_value)
+                flash("Thank you for your vote")
+            else:
+                flash("Candidate: " + candidate_name + " not found")
+
+            return redirect('/voteNow')
+        else:
+            msg = 'Unknown user'
+    msg = 'You need to login before voting'
+    return render_template('login.html', msg=msg)
+
+
+def validate_time():
+    now_time = datetime.datetime.now()
+    voting_schedule = db["voting_schedule"]
+    schedule_cursor = voting_schedule.find()[0]
+    start_time = schedule_cursor['start_time']
+    end_time = schedule_cursor['end_time']
+    if now_time >= start_time and now_time <= end_time:
+        return True
+    else:
+        # Concluding voting
+        max_vote = 0
+        winner_name = ""
+        candidates = db["election_year_2021"]
+        candidates_cursor = candidates.find()
+        for data in candidates_cursor:
+            if int(data['vote']) > max_vote:
+                max_vote = int(data['vote'])
+                winner_name = data['name']
+        candidate_filter = {'name': winner_name}
+        candidate_new_value = {"$set": {'is_winner': True}}
+        candidates.update_one(candidate_filter, candidate_new_value)
+        return False
