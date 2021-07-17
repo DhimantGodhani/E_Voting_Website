@@ -20,7 +20,7 @@ body {
     width: 100%;
 }
 
-.candidates .voting-intro p{
+p{
 	text-align: center;
 	font-size: 40px;
 	color: cyan;
@@ -40,8 +40,8 @@ body {
 	border-style: outset;
 	border-radius: 5%;
 	padding: 20px 10px 20px 10px;
-	width: 25%;
-	margin-right: 20px;
+	width: 22%;
+	margin-right: 10px;
 }
 
 
