@@ -69,6 +69,49 @@ def login():
     return render_template("login.html", login=True)
 
 
+@app.route("/profile", methods=['GET', 'POST'])
+def profile():
+    if request.method == 'POST' and 'name' in request.form and 'username' in request.form and 'password' in request.form and 'age' in request.form and 'gender' in request.form:
+        username = request.form.get("username")
+        password = request.form.get("password")
+        name = request.form.get("name")
+        age = int(request.form.get("age"))
+        gender = request.form.get("gender")
+        users_table = db["users"]
+        udata = users_table.find_one({"username": session["email"]})
+        user_filter = {'_id': udata['_id']}
+        user_new_value = {"$set": {"name": name, "username": username, "password": password, "age": age, "gender": gender}}
+        users_table.update(user_filter, user_new_value, True)
+
+        user_detail = db['users']
+        data = user_detail.find_one({"username": username})
+        name = data['name']
+        username = data['username']
+        password = data['password']
+        age = data['age']
+        gender = data['gender']
+
+        if "email" in session:
+            return render_template("profile.html", profile=True, name=name, username=username, password=password,
+                                   age=age, gender=gender, isLoggedIn=True, msg="User successfully updated!!!")
+        return render_template("profile.html", profile=True, name=name, username=username, password=password, age=age,
+                               gender=gender, msg="User successfully updated!!!")
+
+    elif request.method != 'GET':
+            return render_template("profile.html", msg="Please enter user details carefully!!!", profile=True)
+    elif request.method != 'POST':
+        user_detail = db['users']
+        data = user_detail.find_one({"username": session["email"]})
+        name = data['name']
+        username = data['username']
+        password = data['password']
+        age = data['age']
+        gender = data['gender']
+
+        if "email" in session:
+            return render_template("profile.html", profile=True, name=name, username=username, password=password, age=age, gender=gender, isLoggedIn=True)
+        return render_template("profile.html", profile=True, name=name, username=username, password=password, age=age, gender=gender)
+
 @app.route("/past_results")
 def past_results():
     # election 2019

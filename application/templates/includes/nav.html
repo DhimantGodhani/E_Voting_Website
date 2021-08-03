@@ -2,6 +2,7 @@
     <nav>
         {% if isLoggedIn %}
             <a href="{{ url_for('home') }}" class="nav-link {% if home %} active {% endif %}">Home</a>
+            <a href="{{ url_for('profile') }}" class="nav-link {% if profile %} active {% endif %}">Profile</a>
             <a href="{{ url_for('logout') }}" class="nav-link {% if logout %} active {% endif %}">Logout</a>
         {% else %}
             <a href="{{ url_for('home') }}" class="nav-link {% if home %} active {% endif %}">Home</a>
