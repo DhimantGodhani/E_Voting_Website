@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block css_links %}
+<link rel="stylesheet" href="static/css/register_styling.css">
+<link rel="stylesheet" href="static/css/header_footer_styling.css">
+{% endblock %}
+
+{% block content %}
+<main class="home">
+	{% if msg  %}
+		<div class="alert alert-secondary" role="alert">
+			<p class="msg">{{ msg }}</p>
+		</div>
+	{% endif %}
+	<div class="registration_form">
+		<form name="profile" action="/profile" method="post">
+			<h3>User Profile</h3>
+
+				<label class="name_label" for="name"><b>Full Name</b></label>
+				<input class="inputTextbox" type="text" placeholder="Enter Full Name" name="name" required value="{{name}}"><br><br>
+				<label class="name_label" for="username"><b>UserName</b></label>
+				<input class="inputTextbox" type="email" placeholder="Enter Username" name="username" required value="{{username}}"><br><br>
+				<label class="password_label" for="password"><b>Password</b></label>
+				<input class="inputTextbox" type="text" placeholder="Enter Password" name="password" required value="{{password}}"><br><br>
+				<label class="age_label" for="age"><b>Age</b></label>
+				<input class="inputTextbox" type="number" placeholder="Enter Age" name="age" required value="{{age}}"><br><br>
+				<label class="name_label" for="gender"><b>Gender</b></label>
+				{% if gender == 'Male' %}
+					<input type="radio" id="male" name="gender" value="Male" checked>
+				{% else %}
+					<input type="radio" id="male" name="gender" value="Male">
+				{% endif %}
+				<label class="radio_label" for="male">Male</label>
+				{% if gender == 'Female' %}
+					<input type="radio" id="female" name="gender" value="Female" checked>
+				{% else %}
+					<input type="radio" id="female" name="gender" value="Female">
+				{% endif %}
+				<label class="radio_label" for="female">Female</label><br><br>
+			<button class="profile_btn" type="submit">Update Profile</button>
+		</form>
+	</div>
+</main>
+{% endblock %}
