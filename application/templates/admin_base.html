@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- This website was created by: Aayush Rishi, Dhimant Godhani, Vaibhav Hooda and Vishal Kumar. 03rd June, 2021 -->
+<html lang="en">
+
+<head>
+    {% block css_links %}
+    {% endblock %}
+	<title>E-Voting</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+
+	{% include "includes/admin_nav.html" %}
+
+    {% block content %}
+    {% endblock %}
+
+	{% include "includes/footer.html" %}
+
+</body>
+
+</html>

@@ -55,8 +55,12 @@ def login():
             username_val = username_found['username']
             password_val = username_found['password']
             if password == password_val:
-                session["email"] = username_val
-                return render_template("index.html", home=True, isLoggedIn=True)
+                if username == "admin@gmail.com":
+                    session["email"] = username_val
+                    return render_template("admin_index.html", home=True, isLoggedIn=True)
+                else:
+                    session["email"] = username_val
+                    return render_template("index.html", home=True, isLoggedIn=True)
             else:
                 if "email" in session:
                     return render_template("index.html", home=True, isLoggedIn=True)
@@ -219,7 +223,7 @@ def validate_time():
     schedule_cursor = voting_schedule.find()[0]
     start_time = schedule_cursor['start_time']
     end_time = schedule_cursor['end_time']
-    if now_time >= start_time and now_time <= end_time:
+    if start_time <= now_time <= end_time:
         return True
     else:
         # Concluding voting
@@ -236,3 +240,49 @@ def validate_time():
         candidates.update_one(candidate_filter, candidate_new_value)
         return False
 
+
+@app.route("/election_candidate", methods=['GET', 'POST'])
+def election_candidate():
+    if request.method == 'POST' and 'name' in request.form and 'age' in request.form and 'party' in request.form and 'gender' in request.form:
+        name = request.form.get("name")
+        age = int(request.form.get("age"))
+        party = request.form.get("party")
+        gender = request.form.get("gender")
+        usersTable = db["election_year_2021"]
+        new_user = {"name": name, "age": age, "is_winner": True, "party": party, "vote":0, "gender": gender}
+        try:
+            usersTable.insert_one(new_user)
+        except Exception as e:
+            print("An exception occurred ::", e)
+        return render_template("election_candidate.html", msg="Candidate successfully created!!!", register=True, isLoggedIn=True)
+    else:
+        if request.method != 'GET':
+            return render_template("election_candidate.html", msg="Please enter candidate details carefully!!!", register=True, isLoggedIn=True)
+    return render_template("election_candidate.html", register=True, isLoggedIn=True)
+
+
+@app.route("/create_events", methods=['GET', 'POST'])
+def create_events():
+    if request.method == 'POST' and 'eventName' in request.form and 'eventDesc' in request.form and 'location' in request.form and 'time' in request.form:
+        eventName = request.form.get("eventName")
+        eventDesc = request.form.get("eventDesc")
+        location = request.form.get("location")
+        time = request.form.get("time")
+        eventsTable = db["events"]
+        new_event = {"eventName": eventName, "eventDesc": eventDesc, "location": location, "time": time}
+        try:
+            eventsTable.insert_one(new_event)
+        except Exception as e:
+            print("An exception occurred ::", e)
+        return render_template("create_events.html", msg="Event successfully created!!!", admin_index=True, isLoggedIn=True)
+    else:
+        if request.method != 'GET':
+            return render_template("create_events.html", msg="Please enter events details carefully!!!", admin_index=True, isLoggedIn=True)
+    return render_template("create_events.html", admin_index=True, isLoggedIn=True)
+
+
+@app.route("/admin_index")
+def admin_index():
+    if "email" in session:
+        return render_template("admin_index.html", admin_index=True, isLoggedIn=True)
+    return render_template("admin_index.html", admin_index=True)
