@@ -223,7 +223,7 @@ def validate_time():
     schedule_cursor = voting_schedule.find()[0]
     start_time = schedule_cursor['start_time']
     end_time = schedule_cursor['end_time']
-    if now_time >= start_time and now_time <= end_time:
+    if start_time <= now_time <= end_time:
         return True
     else:
         # Concluding voting
