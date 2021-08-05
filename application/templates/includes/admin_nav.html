@@ -1,0 +1,15 @@
+<header>
+    <nav>
+        {% if isLoggedIn %}
+            <a href="{{ url_for('admin_index') }}" class="nav-link {% if admin_index %} active {% endif %}">Home</a>
+            <a href="{{ url_for('profile') }}" class="nav-link {% if profile %} active {% endif %}">Profile</a>
+            <a href="{{ url_for('logout') }}" class="nav-link {% if logout %} active {% endif %}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('home') }}" class="nav-link {% if home %} active {% endif %}">Home</a>
+            <a href="{{ url_for('login') }}" class="nav-link {% if login %} active {% endif %}">Login</a>
+            <a href="{{ url_for('register') }}" class="nav-link {% if register %} active {% endif %}">Register</a>
+        {% endif %}
+
+    </nav>
+    <hr>
+</header>

@@ -1,0 +1,33 @@
+{% extends "admin_base.html" %}
+
+{% block css_links %}
+<link rel="stylesheet" href="static/css/register_styling.css">
+<link rel="stylesheet" href="static/css/header_footer_styling.css">
+{% endblock %}
+
+{% block content %}
+<main class="home">
+	{% if msg  %}
+		<div class="alert alert-secondary" role="alert">
+			<p class="msg">{{ msg }}</p>
+		</div>
+	{% endif %}
+	<div class="registration_form">
+		<form name="election_candidate" action="/election_candidate" method="post">
+			<h3>Create New Candidate.</h3>
+			<label class="name_label" for="name"><b>Full Name</b></label>
+			<input class="inputTextbox" type="text" placeholder="Enter Full Name" name="name" required><br><br>
+			<label class="age_label" for="age"><b>Age</b></label>
+			<input class="inputTextbox" type="number" placeholder="Enter Age" name="age" required><br><br>
+			<label class="name_label" for="party"><b>Party Name</b></label>
+			<input class="inputTextbox" type="text" placeholder="Enter Party Name" name="party" required><br><br>
+			<label class="name_label" for="gender"><b>Gender</b></label>
+			<input type="radio" id="male" name="gender" value="Male" checked>
+			<label class="radio_label" for="male">Male</label>
+			<input type="radio" id="female" name="gender" value="Female">
+			<label class="radio_label" for="female">Female</label><br><br>
+			<button class="candidate_btn" type="submit">Create Candidate</button>
+		</form>
+	</div>
+</main>
+{% endblock %}

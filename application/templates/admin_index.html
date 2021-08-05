@@ -1,0 +1,40 @@
+{% extends "admin_base.html" %}
+
+{% block css_links %}
+<link rel="stylesheet" href="static/css/home_styling.css">
+<link rel="stylesheet" href="static/css/header_footer_styling.css">
+{% endblock %}
+
+{% block content %}
+<main class="home">
+	<p>
+		"There's no such thing as a vote that doesn't matter. - Barack Obama"
+	</p>
+
+	<div class="homeContainer">
+		<table align="center">
+			<tr>
+				<td width="50%">
+					<div class="homeBlogs" id="1">
+						<img src="static/images/past_result.jpg" style="width: 100%" alt="past result image not found">
+						<hr>
+						<div class="news_block">
+							<h2><a href="{{ url_for('election_candidate') }}">Create Election Candidate</a></h2>
+						</div>
+					</div>
+				</td>
+
+				<td width="50%">
+					<div class="homeBlogs" id="3">
+						<img src="static/images/future_events.jpg" alt="future events image not found" style="width: 100%">
+						<hr>
+						<div class="news_block">
+							<h2><a href="{{ url_for('create_events') }}">Create Events</a></h2>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</main>
+{% endblock %}

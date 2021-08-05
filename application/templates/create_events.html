@@ -1,0 +1,31 @@
+{% extends "admin_base.html" %}
+
+{% block css_links %}
+<link rel="stylesheet" href="static/css/register_styling.css">
+<link rel="stylesheet" href="static/css/header_footer_styling.css">
+{% endblock %}
+
+{% block content %}
+<main class="home">
+	{% if msg  %}
+		<div class="alert alert-secondary" role="alert">
+			<p class="msg">{{ msg }}</p>
+		</div>
+	{% endif %}
+	<div class="registration_form">
+		<form name="create_events" action="/create_events" method="post">
+			<h3>Create New Events.</h3>
+			<label class="name_label" for="eventName"><b>Event Name</b></label>
+			<input class="inputTextbox" type="text" placeholder="Enter Event Name" name="eventName" required><br><br>
+			<label class="name_label" for="location"><b>Location</b></label>
+			<input class="inputTextbox" type="text" placeholder="Enter Event Location" name="location" required><br><br>
+			<label class="name_label" for="time"><b>Time</b></label>
+			<input class="inputTextbox" type="text" placeholder="Enter Event Time" name="time" required><br><br>
+			<label class="name_label" for="eventDesc"><b>Description</b></label>
+			<textarea class="inputTextbox" type="text" placeholder="Enter Event Description" name="eventDesc" required></textarea><br><br>
+
+			<button class="candidate_btn" type="submit">Create Events</button>
+		</form>
+	</div>
+</main>
+{% endblock %}
