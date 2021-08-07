@@ -11,6 +11,8 @@ db = connection_db.connect_to_mongodb()
 @app.route("/")
 def home():
     if "email" in session:
+        if session["email"] == "admin@gmail.com":
+            return render_template("admin_index.html", home=True, isLoggedIn=True)
         return render_template("index.html", home=True, isLoggedIn=True)
     return render_template("index.html", home=True)
 
@@ -25,7 +27,7 @@ def register():
         gender = request.form.get("gender")
         usersTable = db["users"]
         new_user = {"name": name, "username": username, "password": password, "age": age, "gender": gender,
-                    "voted": False}
+                    "voted": False, "is_admin": False}
         try:
             usersTable.insert_one(new_user)
         except Exception as e:
@@ -54,8 +56,9 @@ def login():
         if username_found:
             username_val = username_found['username']
             password_val = username_found['password']
+            is_admin_val = username_found['is_admin']
             if password == password_val:
-                if username == "admin@gmail.com":
+                if is_admin_val:
                     session["email"] = username_val
                     return render_template("admin_index.html", home=True, isLoggedIn=True)
                 else:
@@ -176,7 +179,12 @@ def futureEvents():
                                                                         "eligible candidate.",
                   "location": " Queen West 501", "time": " 02:20pm"}
                  ]
-    return render_template("futureEvents.html", login=True, eventData=eventData)
+    events = db["events"]
+    events_cursor = events.find()
+    events_cursor_list = list(events_cursor)
+    events_json_1 = dumps(events_cursor_list)
+    events_json = json.loads(events_json_1)
+    return render_template("futureEvents.html", login=True, eventData=events_json)
 
 
 @app.route('/vote', methods=['GET', 'POST'])
@@ -249,7 +257,7 @@ def election_candidate():
         party = request.form.get("party")
         gender = request.form.get("gender")
         usersTable = db["election_year_2021"]
-        new_user = {"name": name, "age": age, "is_winner": True, "party": party, "vote":0, "gender": gender}
+        new_user = {"name": name, "age": age, "is_winner": False, "party": party, "vote":0, "gender": gender}
         try:
             usersTable.insert_one(new_user)
         except Exception as e:
